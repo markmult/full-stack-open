@@ -15,7 +15,6 @@ mongoose
 
 const numberValidators = [
   {
-    // Minimum length validator
     validator: (number) => {
       if ((number[2] === "-" || number[3] === "-") && number.length < 9) {
         return false;
@@ -25,7 +24,6 @@ const numberValidators = [
     msg: "must be at least 8 digits",
   },
   {
-    // Regex validator to allow only numbers
     validator: (number) => {
       return /^\d{2,3}-\d+$/.test(number);
     },
