@@ -17,10 +17,6 @@ app.use(
 );
 app.use(express.static("build"));
 
-app.get("/", (request, response) => {
-  res.send("<h1>Hello World!</h1>");
-});
-
 app.get("/api/persons", (request, response) => {
   Person.find({}).then((persons) => {
     response.json(persons);

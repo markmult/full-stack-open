@@ -11,6 +11,7 @@
   "author": "Markus",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^8.50.0",
     "nodemon": "^3.0.1"
   },
   "dependencies": {
