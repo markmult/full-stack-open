@@ -1,33 +1,23 @@
 const mongoose = require("mongoose");
 
 const url = process.env.MONGODB_URI;
-
-console.log("connecting to", url);
+console.log("Connecting to database...");
 
 mongoose
   .connect(url)
   .then(() => {
-    console.log("connected to MongoDB");
+    console.log("Connected to MongoDB");
   })
   .catch((error) => {
-    console.log("error connecting to MongoDB:", error.message);
+    console.log(`Error connecting to MongoDB:  ${error.message}`);
   });
 
 const numberValidators = [
   {
-    validator: (number) => {
-      if ((number[2] === "-" || number[3] === "-") && number.length < 9) {
-        return false;
-      }
-      return true;
+    validator: function (v) {
+      return /^\d{2,3}-\d{7,}/.test(v);
     },
-    msg: "must be at least 8 digits",
-  },
-  {
-    validator: (number) => {
-      return /^\d{2,3}-\d+$/.test(number);
-    },
-    msg: "invalid phone number",
+    message: (props) => `${props.value} is not a valid`,
   },
 ];
 
@@ -40,6 +30,7 @@ const personSchema = new mongoose.Schema({
   number: {
     type: String,
     validate: numberValidators,
+    minlength: 8,
     required: true,
   },
 });
