@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/blogs
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im11bHRhbWEiLCJpZCI6IjY1MmVjNjcyMmExN2Y4NDAxYzQ2YmFjZCIsImlhdCI6MTY5NzU2NDU1MH0.LI37V7oyQTlK9qqGAWmRPhjAtweBpj6X_MQ5Fd5kjqA
+
+{
+    "title": "React is fun",
+    "author": "Markus",
+    "url": "url.com",
+    "likes": 37
+}
