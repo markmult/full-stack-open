@@ -11,6 +11,8 @@ const Blog = ({ blog, user, handleBlogDelete, handleBlogLike }) => {
     marginBottom: 5,
   };
 
+  const showWhenVisible = { display: showFull ? "" : "none" };
+
   const toggleVisibility = () => {
     setShowFull(!showFull);
   };
@@ -35,24 +37,22 @@ const Blog = ({ blog, user, handleBlogDelete, handleBlogLike }) => {
   };
 
   return (
-    <div style={blogStyle}>
+    <div className="blogContent" style={blogStyle}>
       <div>
         {blog.title} {blog.author}
         <button onClick={toggleVisibility}>{showFull ? "hide" : "view"}</button>
       </div>
-      {showFull && (
+      <div style={showWhenVisible} className="additionalBlogContent">
+        <div>{blog.url}</div>
         <div>
-          <div>{blog.url}</div>
-          <div>
-            likes {blog.likes === undefined ? 0 : blog.likes}{" "}
-            <button onClick={handleLike}>like</button>
-          </div>
-          <div>{blog.user.name}</div>
+          likes {blog.likes === undefined ? 0 : blog.likes}{" "}
+          <button onClick={handleLike}>like</button>
         </div>
-      )}
-      {showFull && blog.user.username === user.username && (
-        <button onClick={handleDelete}>remove</button>
-      )}
+        <div>{blog.user.name}</div>
+        {showFull && blog.user.username === user.username && (
+          <button onClick={handleDelete}>remove</button>
+        )}
+      </div>
     </div>
   );
 };
