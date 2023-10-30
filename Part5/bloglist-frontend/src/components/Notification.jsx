@@ -23,7 +23,11 @@ const Notification = ({ message, positive }) => {
     return null;
   }
 
-  return <div style={positive ? positiveStyle : negativeStyle}>{message}</div>;
+  return (
+    <div className="error" style={positive ? positiveStyle : negativeStyle}>
+      {message}
+    </div>
+  );
 };
 
 export default Notification;

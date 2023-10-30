@@ -41,7 +41,7 @@ const App = () => {
       setBlogs((state) => [...state, blog]);
       setPositive(true);
       setNotificationMessage(
-        `a new blog ${blog.title} by ${blog.author} added`
+        `a New blog ${blog.title} by ${blog.author} added`
       );
       setTimeout(() => {
         setNotificationMessage(null);
@@ -90,7 +90,7 @@ const App = () => {
       setPassword("");
     } catch (exception) {
       setPositive(false);
-      setNotificationMessage("wrong username of password");
+      setNotificationMessage("wrong username or password");
       setTimeout(() => {
         setNotificationMessage(null);
       }, 5000);
@@ -111,6 +111,7 @@ const App = () => {
           <div>
             username
             <input
+              id="username"
               type="text"
               value={username}
               name="Username"
@@ -120,13 +121,16 @@ const App = () => {
           <div>
             password
             <input
+              id="password"
               type="password"
               value={password}
               name="Password"
               onChange={({ target }) => setPassword(target.value)}
             />
           </div>
-          <button type="submit">login</button>
+          <button id="login-button" type="submit">
+            login
+          </button>
         </form>
       </div>
     );
